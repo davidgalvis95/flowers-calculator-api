@@ -1,22 +1,21 @@
-# Getting Started
+# Flowers Calculator API
 
-### Reference Documentation
+### Description:
 
-For further reference, please consider the following sections:
+This is an API developed in java - spring boot that takes care of the calculations regarding the products offered by different companies, these calculations include the calculation of freight for the products offered by a company, as well as the adjusted price that can be offered to a customer and also some codified names for different products.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.5/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.5/maven-plugin/reference/html/#build-image)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#using.devtools)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#web)
+### How to use it:
 
-### Guides
+* Download the repo from `https://github.com/davidgalvis95/flowers-calculator-api`
+* Stand over the root directory of the project and run `mvn clean install` 
+* Stand over the root of the project and run `docker-compose up` to start up the postgres db.
+* Stand over the root directory of the project and run `java -jar target/myapplication-0.0.1-SNAPSHOT.jar` to run the project.
 
-The following guides illustrate how to use some features concretely:
+### Curl requests examples to the project endpoints:
 
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+* Get Freight Cost By Company: `curl --location 'http://localhost:9000/api/v1/products/freight-cost?companyId=3'`
+* Get Products Price For Customer: `curl --location 'http://localhost:9000/api/v1/products/price?customerId=1'`
+* Get Product Name Codified: `curl --location 'http://localhost:9000/api/v1/products/code?productId=3'`
+
+
 
