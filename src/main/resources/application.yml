@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    password: flowers
+    url: jdbc:postgresql://localhost:5432/inventory_db
+    username: postgres
+server:
+  port: 9000
