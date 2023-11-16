@@ -25,6 +25,7 @@ public class ProductsCalculatorController {
     public ResponseEntity<StandardResponseDto<FinalProductsFreight>> getFreightForProducts(@RequestParam @NotNull final int companyId) {
         final FinalProductsFreight productsFreightResult = productsCalculatorService.getFreightForInventoryProducts(companyId);
 
+        //Created a standard dto to wrap the response in case one wants to respond with an exception and with a meaningful message
         final StandardResponseDto<FinalProductsFreight> standardResponseDto = new StandardResponseDto<>(
                 productsFreightResult,
                 null,
@@ -37,6 +38,7 @@ public class ProductsCalculatorController {
     public ResponseEntity<StandardResponseDto<ProductsPriceWrapper>> getPriceForProducts(@RequestParam @NotNull final int customerId) {
         final ProductsPriceWrapper productsFreightResult = productsCalculatorService.getProductsPriceForCustomer(customerId);
 
+        //Created a standard dto to wrap the response in case one wants to respond with an exception and with a meaningful message
         final StandardResponseDto<ProductsPriceWrapper> standardResponseDto = new StandardResponseDto<>(
                 productsFreightResult,
                 null,
@@ -49,6 +51,7 @@ public class ProductsCalculatorController {
     public ResponseEntity<StandardResponseDto<ProductCode>> getProductCode(@RequestParam @NotNull final int productId) {
         final ProductCode productsFreightResult = productsCalculatorService.getProductCode(productId);
 
+        //Created a standard dto to wrap the response in case one wants to respond with an exception and with a meaningful message
         final StandardResponseDto<ProductCode> standardResponseDto = new StandardResponseDto<>(
                 productsFreightResult,
                 null,

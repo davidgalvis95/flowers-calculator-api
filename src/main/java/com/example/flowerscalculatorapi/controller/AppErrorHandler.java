@@ -29,6 +29,7 @@ public class AppErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(buildStandardResponse(ex.getMessage(), null), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    //Created a standard dto to wrap the response in case one wants to respond with an exception and with a meaningful message
     private StandardResponseDto<?> buildStandardResponse(final String errorMessage, final String customMessage) {
         return new StandardResponseDto<>(
                 null,

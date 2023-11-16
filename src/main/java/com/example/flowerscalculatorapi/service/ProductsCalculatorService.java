@@ -31,6 +31,7 @@ public class ProductsCalculatorService {
 
     public FinalProductsFreight getFreightForInventoryProducts(final Integer companyId) {
 
+        //Fetches all the products considering that one won't get same product repeated for the same company
         final List<Inventory> inventoryProducts = inventoryRepository.findInventoryByCompanyId(companyId);
         final List<ProductFreightDto> products = inventoryProducts.stream()
                 .map(this::mapInventoryToProductFreight)
@@ -43,6 +44,7 @@ public class ProductsCalculatorService {
     }
 
     public ProductsPriceWrapper getProductsPriceForCustomer(final Integer customerId) {
+        //Only if there's a customer the adjusted price for products calculation is performed
         return customerRepository.findById(customerId)
                 .map(c -> {
                     final List<Inventory> inventoryProducts = inventoryRepository.findAll();
@@ -56,6 +58,7 @@ public class ProductsCalculatorService {
     }
 
     public ProductCode getProductCode(Integer productId) {
+        //Only if there's a product the codified name calculation is performed
         return productRepository.findById(productId)
                 .map(p -> ProductCode.builder()
                         .productName(p.getName())
@@ -64,7 +67,8 @@ public class ProductsCalculatorService {
                 .orElse(null);
     }
 
-    private ProductFreightDto mapInventoryToProductFreight(Inventory inventory) {
+    private ProductFreightDto mapInventoryToProductFreight(final Inventory inventory) {
+        //Applying the formula to get the product freight and mapping to the dto
         final Product product = inventory.getProduct();
         final BoxType boxType = inventory.getBoxType();
         final Double cubesPerBox = (boxType.getHeight() * boxType.getWidth() * boxType.getLength()) / 1728;
@@ -80,6 +84,7 @@ public class ProductsCalculatorService {
 
     private List<ProductPriceDto> calculateProductPrice(final Customer customer,
                                                         final List<Inventory> inventoryProducts) {
+        //Applying the formula to calculate price and rounding to 2 decimals for each product in the inventory
         return inventoryProducts.stream().map(inventory -> {
             final double basePrice = inventory.getBasePrice();
             DecimalFormat decimalFormat = new DecimalFormat("#.##");
