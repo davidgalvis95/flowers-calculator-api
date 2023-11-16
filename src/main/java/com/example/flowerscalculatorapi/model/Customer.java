@@ -1,7 +1,6 @@
 package com.example.flowerscalculatorapi.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,13 +12,13 @@ import lombok.Data;
 @Table(name = "tblcustomerpt")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "varchar(80)")
     private String name;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "decimal(5, 2) default 0")
     private Double markDown;
 
     public Customer() {}

@@ -1,7 +1,6 @@
 package com.example.flowerscalculatorapi.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,19 +15,19 @@ import java.util.List;
 public class BoxType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "varchar(80)")
     private String code;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "decimal(10, 5) default 0")
     private Double width;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "decimal(10, 5) default 0")
     private Double height;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "decimal(10, 5) default 0")
     private Double length;
 
     @OneToMany(

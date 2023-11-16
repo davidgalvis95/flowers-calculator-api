@@ -14,9 +14,10 @@ import java.util.List;
 @Table(name = "tblcompanypt")
 public class Company {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, columnDefinition = "varchar(80)")
     private String name;
 
     @OneToMany(

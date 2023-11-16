@@ -14,7 +14,7 @@ import lombok.Data;
 @Table(name = "tblinventorypt")
 public class Inventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull
@@ -32,13 +32,13 @@ public class Inventory {
     @JoinColumn(name = "productId", referencedColumnName = "id")
     private Product product;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "decimal(19, 5) default 0")
     private Double cubesPerCarrier;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "numeric(5)")
     private Integer pack;
 
-    @NotNull
+    @Column(nullable = false, columnDefinition = "decimal(10, 5) default 0")
     private Double basePrice;
 
     public Inventory(){}
